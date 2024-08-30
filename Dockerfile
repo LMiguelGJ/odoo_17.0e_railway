@@ -9,9 +9,8 @@ COPY . .
 # Establece el usuario root
 USER root
 
-# Crea el usuario 'odoo' y el directorio de inicio
-RUN useradd --system --home /opt/odoo --shell /bin/bash odoo && \
-    mkdir -p /opt/odoo && \
+# Crea el directorio de inicio si no existe y asigna permisos
+RUN mkdir -p /opt/odoo && \
     chown -R odoo:odoo /opt/odoo
 
 # Asigna permisos adecuados a los archivos
