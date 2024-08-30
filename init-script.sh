@@ -5,17 +5,6 @@ echo "Instalando herramientas necesarias..."
 apt-get update >> /tmp/log.txt 2>&1
 apt-get install -y netcat curl postgresql-client >> /tmp/log.txt 2>&1
 
-# Verifica si el usuario 'odoo' existe, si no, créalo
-if ! id "odoo" &>/dev/null; then
-    echo "El usuario 'odoo' no existe. Creándolo..."
-    useradd --system --home /opt/odoo --shell /bin/bash odoo
-    mkdir -p /opt/odoo
-    chown -R odoo:odoo /opt/odoo
-    echo "Usuario 'odoo' creado exitosamente."
-else
-    echo "El usuario 'odoo' ya existe."
-fi
-
 # Ejecutar Odoo en segundo plano
 echo "Iniciando Odoo..."
 su - odoo -c "/usr/bin/odoo -r ${db_user} -w ${db_password} --db_host ${pg_host} --db_port ${pg_port} -d ${db_name} -i web_enterprise"

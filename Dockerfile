@@ -9,12 +9,20 @@ COPY . .
 # Establece el usuario root
 USER root
 
+# Crea el usuario 'odoo' y el directorio de inicio
+RUN useradd --system --home /opt/odoo --shell /bin/bash odoo && \
+    mkdir -p /opt/odoo && \
+    chown -R odoo:odoo /opt/odoo
+
 # Asigna permisos adecuados a los archivos
 RUN chmod +x /app/init-script.sh
 
 # Expone los puertos necesarios
 EXPOSE 8085 8069
 EXPOSE 8086 8072
+
+# Cambia al usuario 'odoo' y ejecuta el script de inicialización
+USER odoo
 
 # Punto de entrada
 ENTRYPOINT ["/bin/bash", "-c", "/app/init-script.sh"]
