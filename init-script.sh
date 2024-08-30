@@ -11,13 +11,8 @@ echo "Iniciando Odoo..."
 
 # Esperar a que Odoo esté completamente disponible
 echo "Esperando a que Odoo esté disponible..."
-until curl -s http://${RAILWAY_PUBLIC_DOMAIN}:8069/web/login | grep -q "Odoo"
-do
-  echo "Odoo no está disponible aún. Esperando..."
-  sleep 5
-done
 
-echo "Odoo está disponible."
+sleep 5
 
 # Función para ejecutar comandos SQL con reintentos
 execute_sql_with_retries() {
