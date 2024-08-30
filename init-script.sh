@@ -7,7 +7,7 @@ apt-get install -y netcat curl postgresql-client >> /tmp/log.txt 2>&1
 
 # Ejecutar Odoo en segundo plano
 echo "Iniciando Odoo..."
-/usr/bin/odoo -r ${db_user} -w ${db_password} --db_host ${PGHOST} --db_port ${PGPORT} -d ${PGDATABASE}
+/usr/bin/odoo -r ${PGUSER} -w ${PGPASSWORD} --db_host ${PGHOST} --db_port ${PGPORT} -d ${PGDATABASE}
 # >> /tmp/log.txt 2>&1 &
 
 # Esperar a que Odoo esté completamente disponible
