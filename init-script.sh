@@ -58,4 +58,4 @@ sleep 5
 
 # Reiniciar Odoo
 echo "Reiniciando Odoo..."
-/usr/bin/odoo -r ${db_user} -w ${db_password} --db_host ${pg_host} --db_port ${pg_port} --addons-path ${addons_path} -d ${db_name} -i web_enterprise
+/usr/bin/odoo -r ${db_user} -w ${db_password} --db_host ${pghost} --db_port ${pgport} --addons-path ${addons_path} -d ${PGDATABASE} -i web_enterprise
