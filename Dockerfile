@@ -3,6 +3,9 @@ FROM dwiorderfaz/odoo-enterprise:17.0
 
 WORKDIR /app
 
+ENV LANG=en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
+
 # Copia el archivo .env y otros archivos necesarios al contenedor
 COPY . .
 
