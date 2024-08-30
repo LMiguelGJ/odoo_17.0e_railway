@@ -9,8 +9,7 @@ COPY ./init-script.sh /init-script.sh
 COPY ./init-db.sql /init-db.sql
 
 # Asigna permisos adecuados a los archivos
-RUN chmod 644 /etc/odoo/.env && \
-    chmod +x /init-script.sh
+RUN chmod +x /init-script.sh
 
 # Establece el usuario root
 USER root
