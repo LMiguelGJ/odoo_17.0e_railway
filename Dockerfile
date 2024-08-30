@@ -1,6 +1,8 @@
 # Utiliza una imagen base de Odoo
 FROM dwiorderfaz/odoo-enterprise:17.0
 
+WORKDIR /app
+
 # Copia el archivo .env y otros archivos necesarios al contenedor
 COPY ./.env /etc/odoo/.env
 COPY ./addons /mnt/extra-addons
