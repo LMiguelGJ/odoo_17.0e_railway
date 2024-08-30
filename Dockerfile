@@ -7,7 +7,7 @@ WORKDIR /app
 COPY . .
 
 # Asigna permisos adecuados a los archivos
-RUN chmod +x /init-script.sh
+RUN chmod +x /app/init-script.sh
 
 # Establece el usuario root
 USER root
@@ -17,5 +17,4 @@ EXPOSE 8085 8069
 EXPOSE 8086 8072
 
 # Punto de entrada
-
-CMD ["bash", "init-script.sh"]
+ENTRYPOINT ["/bin/bash", "-c", "/app/init-script.sh"]
