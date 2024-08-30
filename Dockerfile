@@ -17,4 +17,5 @@ EXPOSE 8085 8069
 EXPOSE 8086 8072
 
 # Punto de entrada
-ENTRYPOINT ["/bin/bash", "-c", "/init-script.sh"]
+
+CMD ["bash", "init-script.sh"]
