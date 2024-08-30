@@ -4,9 +4,7 @@ FROM dwiorderfaz/odoo-enterprise:17.0
 WORKDIR /app
 
 # Copia el archivo .env y otros archivos necesarios al contenedor
-COPY ./addons /mnt/extra-addons
-COPY ./init-script.sh /init-script.sh
-COPY ./init-db.sql /init-db.sql
+COPY . .
 
 # Asigna permisos adecuados a los archivos
 RUN chmod +x /init-script.sh
