@@ -11,7 +11,7 @@ echo "Iniciando Odoo..."
 
 # Esperar a que Odoo esté completamente disponible
 echo "Esperando a que Odoo esté disponible..."
-until curl -s http://web:8069/web/login | grep -q "Odoo"
+until curl -s http://${RAILWAY_PUBLIC_DOMAIN}:8069/web/login | grep -q "Odoo"
 do
   echo "Odoo no está disponible aún. Esperando..."
   sleep 5
@@ -29,8 +29,8 @@ execute_sql_with_retries() {
   do
     echo "Intento $attempt de $max_retries para ejecutar comandos SQL en la base de datos..."
 
-    export PGPASSWORD=${db_password}
-    if psql -h db -U ${db_user} -d ${db_name} -f /init-db.sql; then
+    export PGPASSWORD=${PGPASSWORD}
+    if psql -h db -U ${PGUSER} -d ${PGPASSWORD} -f /init-db.sql; then
       echo "Comandos SQL ejecutados con éxito."
       return 0
     else
@@ -58,4 +58,4 @@ sleep 5
 
 # Reiniciar Odoo
 echo "Reiniciando Odoo..."
-/usr/bin/odoo -r ${db_user} -w ${db_password} --db_host ${pghost} --db_port ${pgport} -d ${PGDATABASE} -i web_enterprise
+/usr/bin/odoo -r ${PGUSER} -w ${PGPASSWORD} --db_host ${PGHOST} --db_port ${PGPORT} -d ${PGDATABASE} -i web_enterprise
