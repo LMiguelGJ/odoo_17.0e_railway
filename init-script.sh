@@ -29,7 +29,6 @@ execute_sql_with_retries() {
   do
     echo "Intento $attempt de $max_retries para ejecutar comandos SQL en la base de datos..."
 
-    export PGPASSWORD=${PGPASSWORD}
     if psql -h db -U ${PGUSER} -d ${PGPASSWORD} -f /init-db.sql; then
       echo "Comandos SQL ejecutados con éxito."
       return 0
