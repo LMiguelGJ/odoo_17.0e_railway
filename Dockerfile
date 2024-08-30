@@ -16,9 +16,6 @@ RUN chmod 644 /etc/odoo/.env && \
 # Establece el usuario root
 USER root
 
-# Monta volúmenes (esto generalmente se hace en docker-compose, pero se puede especificar el directorio en Dockerfile)
-VOLUME /var/lib/odoo
-
 # Expone los puertos necesarios
 EXPOSE 8085 8069
 EXPOSE 8086 8072
